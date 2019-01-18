@@ -1,0 +1,61 @@
+package com.matt.Keyword.controllers;
+
+
+import com.matt.Keyword.models.User;
+import com.matt.Keyword.models.data.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
+
+//test commit note
+//second try
+//third try
+/**
+ * Created by LaunchCode
+ */
+@Controller
+@RequestMapping("keyword")
+
+public class KeywordController {
+
+    @Autowired
+    private UserDao userDao;
+
+    @RequestMapping(value = "")
+    public String index(Model model){
+
+        model.addAttribute("title", "Keyword");
+
+        return "user/index";
+
+    }
+
+    @RequestMapping(value = "register", method = RequestMethod.GET)
+    public String displayUserRegistrationForm(Model model) {
+        model.addAttribute("title", "Register");
+        model.addAttribute(new User());
+        return "user/register";
+    }
+
+    @RequestMapping(value = "register", method = RequestMethod.POST)
+    public String processAddCheeseForm(@ModelAttribute  @Valid User newUser,
+                                       Errors errors, Model model) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Register");
+            return "user/register";
+        }
+
+        userDao.save(newUser);
+
+        return "redirect:";
+    }
+
+}
