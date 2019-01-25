@@ -3,7 +3,6 @@ package com.matt.Keyword.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 public class Account {
@@ -19,6 +18,10 @@ public class Account {
     @NotNull
     @Size(min=1, message = "A password is required")
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
 
     public Account(String name, String password) {
         this.name = name;

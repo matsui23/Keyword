@@ -10,6 +10,8 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
+<p th:text="${session.currentUser.email}"></p>
+
 <table class="table">
 
     <tr>

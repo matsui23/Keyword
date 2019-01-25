@@ -1,7 +1,6 @@
 package com.matt.Keyword.models;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -12,13 +11,17 @@ public class User {
     @GeneratedValue
     private int id;
 
-    @NotNull
+
     @Size(min=3, message = "Try again")
     private String email;
 
-    @NotNull
+
     @Size(min=1, message = "A password is required")
     private String password;
+
+    @OneToMany(mappedBy="user")
+    private List<Account> accounts;
+
 
     public User(String name, String password) {
         this.email = email;
@@ -49,6 +52,12 @@ public class User {
     public void setPassword(String password) {
 
         this.password = password;
+    }
+
+    @Override
+    public String toString()
+    {
+        return email + " " + password;
     }
 
 
