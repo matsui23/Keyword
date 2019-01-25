@@ -20,7 +20,7 @@ public class Account {
     private String password;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="user_id", nullable = false)
     private User user;
 
     public Account(String name, String password) {
@@ -53,6 +53,8 @@ public class Account {
 
         this.password = password;
     }
-
+    public void setUser(Integer id){
+        this.id = id;
+    }
 
 }

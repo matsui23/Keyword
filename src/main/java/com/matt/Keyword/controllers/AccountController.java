@@ -2,6 +2,7 @@ package com.matt.Keyword.controllers;
 
 
 import com.matt.Keyword.models.Account;
+import com.matt.Keyword.models.User;
 import com.matt.Keyword.models.data.AccountDao;
 import com.matt.Keyword.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,16 +63,17 @@ public class AccountController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddAccountForm(@ModelAttribute  @Valid Account newAccount,
-                                       Errors errors, Model model, HttpSession session) {
+                                       Errors errors, Model model, HttpSession session, User currentUser) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "List of accounts");
             return "accounts/add";
         }
-        session.getAttribute("currentUser");
+        currentUser = (User) session.getAttribute("currentUser");
+
+        newAccount.setUser(currentUser.getId());
 
         accountDao.save(newAccount);
-
 
         return "redirect:";
     }
