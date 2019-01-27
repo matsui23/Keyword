@@ -99,8 +99,9 @@ public class KeywordController {
 
         session.removeAttribute("currentUser");
         model.addAttribute(new User());
+        model.addAttribute("title", "Login");
 
-        return "user/login";
+        return "redirect:/keyword/login";
 
     }
 

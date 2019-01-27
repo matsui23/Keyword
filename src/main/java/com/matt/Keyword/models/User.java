@@ -2,6 +2,7 @@ package com.matt.Keyword.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,11 +21,10 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy="user")
-    //@JoinColumn(name="user_id")
-    private List<Account> accounts;
+    private List<Account> accounts = new ArrayList<>();
 
 
-    public User(String name, String password) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
@@ -34,6 +34,10 @@ public class User {
     public int getId() {
 
         return id;
+    }
+
+    public void setId(Integer id){
+        this.id = id;
     }
     public String getEmail() {
 

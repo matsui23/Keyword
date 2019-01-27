@@ -71,11 +71,18 @@ public class AccountController {
         }
         currentUser = (User) session.getAttribute("currentUser");
 
-        newAccount.setUser(currentUser.getId());
+        int currentId = currentUser.getId();
+
+        currentUser.setId(currentId);
+
+        newAccount.setUser(currentUser);
 
         accountDao.save(newAccount);
 
         return "redirect:";
+
+
+
     }
 
 }
