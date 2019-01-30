@@ -20,8 +20,10 @@
     </tr>
 
     <tr th:each="account : ${accounts}">
+        <div th:if="${account.userid} == ${session.currentUser.id}">
         <td th:text="${account.name}"></td>
         <td th:text="${account.password}"></td>
+        </div>
     </tr>
 
 </table>

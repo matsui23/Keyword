@@ -82,9 +82,8 @@ public class KeywordController {
         for (User userCheck : userDao.findAll()) {
 
             if (userCheck.toString().contentEquals(newUser.toString())) {
-
-                session.setAttribute("currentUser", newUser);
-                model.addAttribute("currentUser", newUser);
+                session.setAttribute("currentUser", userCheck);
+                model.addAttribute("currentUser", userCheck);
 
                 return "redirect:";
             }

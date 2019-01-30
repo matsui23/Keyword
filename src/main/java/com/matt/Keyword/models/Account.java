@@ -12,28 +12,29 @@ public class Account {
     private int id;
 
     @NotNull
-    @Size(min=3, message = "Try again")
+    @Size(min = 3, message = "Try again")
     private String name;
 
     @NotNull
-    @Size(min=1, message = "A password is required")
+    @Size(min = 1, message = "A password is required")
     private String password;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name = "user_id")
+    private Integer userid;
 
     public Account(String name, String password) {
         this.name = name;
         this.password = password;
     }
 
-    public Account() {}
+    public Account() {
+    }
 
     public int getId() {
 
         return id;
     }
+
     public String getName() {
 
         return name;
@@ -53,12 +54,13 @@ public class Account {
 
         this.password = password;
     }
-    public User getUser() {
-        return user;
+
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
 }

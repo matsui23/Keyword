@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<br>
+<br>
+
+<form method="post" style="max-width:600px;" th:object="${mod}">
+    <div class="form-group">
+        <label th:for="role">Type</label>
+        <select th:name="role">
+            <option th:value=${'1'}>Special</option>
+            <option th:value=${'2'}>Alphabetic</option>
+            <option th:value=${'3'}>Numeric</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="entry">Characters / Substring</label>
+        <input class="form-control" th:field="*{entry}" />
+        <span th:errors="*{entry}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Add mod"/>
+</form>
+
+</body>
+</html>

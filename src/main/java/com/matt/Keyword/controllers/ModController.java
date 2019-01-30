@@ -1,9 +1,9 @@
 package com.matt.Keyword.controllers;
 
 
-import com.matt.Keyword.models.Account;
+import com.matt.Keyword.models.Mod;
 import com.matt.Keyword.models.User;
-import com.matt.Keyword.models.data.AccountDao;
+import com.matt.Keyword.models.data.ModDao;
 import com.matt.Keyword.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,18 +23,18 @@ import javax.validation.Valid;
  * Created by LaunchCode
  */
 @Controller
-@RequestMapping("account")
+@RequestMapping("mod")
 
-public class AccountController {
+public class ModController {
 
     @Autowired
     private UserDao userDao;
 
     @Autowired
-    private AccountDao accountDao;
+    private ModDao modDao;
 
     @RequestMapping(value = "")
-    public String index(Model model, HttpSession session){
+    public String index(Model model, HttpSession session) {
 
         if (session.getAttribute("currentUser") == null) {
 
@@ -42,32 +42,32 @@ public class AccountController {
         }
 
         session.getAttribute("currentUser");
-        model.addAttribute("title", "Accounts");
-        model.addAttribute("accounts", accountDao.findAll());
+        model.addAttribute("title", "Mods");
+        model.addAttribute("mods", modDao.findAll());
 
-        return "accounts/index";
+        return "mods/index";
 
     }
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String displayAddAccountForm(Model model, HttpSession session) {
+    public String displayModForm(Model model, HttpSession session) {
 
         if (session.getAttribute("currentUser") == null) {
             return "redirect:/keyword/login";
         }
 
-        model.addAttribute("title", "Add and link an account");
-        model.addAttribute(new Account());
-        return "accounts/add";
+        model.addAttribute("title", "Add a new mod");
+        model.addAttribute(new Mod());
+        return "mods/add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddAccountForm(@ModelAttribute  @Valid Account newAccount,
+    public String processAddModForm(@ModelAttribute @Valid Mod newMod,
                                         Errors errors, Model model, HttpSession session) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "List of accounts");
-            return "accounts/add";
+            model.addAttribute("title", "List of Mods");
+            return "mods/add";
         }
         User currentUser = (User) session.getAttribute("currentUser");
 
@@ -75,12 +75,13 @@ public class AccountController {
 
         currentUser.setId(currentUser.getId());
 
-        newAccount.setUserid(currentUser.getId());
+        newMod.setUserid(currentUser.getId());
 
-        accountDao.save(newAccount);
+        modDao.save(newMod);
 
         return "redirect:";
 
     }
 
 }
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<p th:unless="${mods} and ${mods.size()}">No current mods</p>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<p th:text="${session.currentUser.email}"></p>
+
+<table class="table">
+    <tr>
+        <th>Type</th>
+        <th>Entry</th>
+    </tr>
+        <div th:if="${mods} != null">
+            <tr th:each="mod : ${mods}">
+                <div th:if="${mod.userid} == ${session.currentUser.id}">
+                    <td th:text="${mod.role}"></td>
+                    <td th:text="${mod.entry}"></td>
+                </div>
+            </tr>
+        </div>
+
+</table>
+</body>
+</html>
