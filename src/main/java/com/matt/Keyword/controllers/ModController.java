@@ -43,7 +43,10 @@ public class ModController {
 
         session.getAttribute("currentUser");
         model.addAttribute("title", "Mods");
+        Iterable modList = modDao.findAll();
+
         model.addAttribute("mods", modDao.findAll());
+
 
         return "mods/index";
 
