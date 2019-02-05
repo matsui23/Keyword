@@ -6,7 +6,7 @@
 
 <h1 th:text="${title}">Default Title</h1>
 
-<p th:unless="${mods} and ${mods.size()}">No current mods</p>
+<p th:unless="${tests} and ${tests.size()}">No current mods</p>
 
 <nav th:replace="fragments :: navigation"></nav>
 
@@ -17,15 +17,25 @@
         <th>Type</th>
         <th>Entry</th>
     </tr>
-        <div th:if="${mods} != null">
-            <tr th:each="mod : ${mods}">
-                <div th:if="${mod.userid} == ${session.currentUser.id}">
-                    <td th:text="${mod.role}"></td>
-                    <td th:text="${mod.entry}"></td>
+        <div th:if="${tests != null}">
+            <tr th:each="test : ${tests}">
+                <div th:if="${test.userid} == ${session.currentUser.id}">
+                    <td th:if="${test.role == 1}" th:text = "Special"></td>
+                    <td th:if="${test.role == 2}" th:text = "Alphabetic"></td>
+                    <td th:if="${test.role == 3}" th:text = "Numeric"></td>
+                    <td th:text="${test.entry}"></td>
+
                 </div>
             </tr>
         </div>
 
 </table>
+
+    <a href="/mod/remove">Delete mod(s)</a> |
+    <a href="/mod/add">Add mod(s)</a>
+
+
+
+
 </body>
 </html>

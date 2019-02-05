@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post">
+
+    <div th:each="account : ${accounts}" class="checkbox">
+
+        <div th:if="${account.userid} == ${session.currentUser.id}">
+
+            <input type="checkbox" name="accountIds" th:value="${account.id}" th:id="${account.id}"/>
+            <label th:for="${account.id}" th:text="${account.name}"></label>
+            <br />
+
+        </div>
+
+    </div>
+
+    <input type="submit" value="Remove Account(s)" />
+</form>
+
+</body>
+</html>

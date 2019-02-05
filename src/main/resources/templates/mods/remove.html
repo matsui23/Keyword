@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post">
+
+    <div th:each="test : ${tests}" class="checkbox">
+
+        <div th:if="${test.userid} == ${session.currentUser.id}">
+
+            <input type="checkbox" name="modIds" th:value="${test.id}" th:id="${test.id}"/>
+            <label th:for="${test.id}" th:text="${test.entry}"></label>
+            <br />
+
+        </div>
+
+    </div>
+
+    <input type="submit" value="Remove Mod(s)" />
+</form>
+
+</body>
+</html>

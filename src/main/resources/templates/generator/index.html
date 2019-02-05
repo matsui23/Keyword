@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<br>
+<br>
+
+<div class="form-group">
+    <label>Set the number of mods to be used - for best results enter 8 - 12</label>
+    <input class="form-control" th:name="modNumber"/>
+</div>
+
+<form method="post" style="max-width:600px;" th:object="${mod}">
+    <div class="form-group">
+        <label th:for="role">Type</label>
+        <select th:name="role">
+            <option th:value=${'1'}>Special</option>
+            <option th:value=${'2'}>Alphabetic</option>
+            <option th:value=${'3'}>Numeric</option>
+        </select>
+    </div>
+
+    <input type="submit" value="Add mod"/>
+</form>
+
+</body>
+</html>
