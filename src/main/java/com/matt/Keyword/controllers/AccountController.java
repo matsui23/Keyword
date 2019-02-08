@@ -12,6 +12,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -81,6 +82,37 @@ public class AccountController {
 
         return "redirect:";
 
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.GET)
+    public String deleteExistingAccount(Model model, HttpSession session) {
+
+        if (session.getAttribute("currentUser") == null) {
+
+            return "redirect:/keyword/login";
+        }
+
+        session.getAttribute("currentUser");
+        model.addAttribute("title", "Delete some mods");
+        Iterable<Account> accountList = accountDao.findAll();
+        model.addAttribute("accounts", accountList);
+        return "accounts/remove";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public String deleteExistingAccountProcess(@RequestParam(value = "accountIds", required = false) int[] accountIds) {
+
+        Iterable<Account> accounts = accountDao.findAll();
+
+        for(Account account : accounts){
+
+            for(int id : accountIds)
+                if (account.getId() == id) {
+                    accountDao.deleteById(account.getId());
+                }
+
+        }
+        return "redirect:";
     }
 
 }
