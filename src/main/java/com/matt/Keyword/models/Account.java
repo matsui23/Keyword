@@ -1,8 +1,9 @@
 package com.matt.Keyword.models;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Account {
@@ -11,12 +12,8 @@ public class Account {
     @GeneratedValue
     private int id;
 
-    @NotNull
-    @Size(min = 3, message = "Try again")
     private String name;
 
-    @NotNull
-    @Size(min = 1, message = "A password is required")
     private String password;
 
     @Column(name = "user_id")

@@ -21,7 +21,7 @@
     <br/>
     <label>Select what kind of mods you want to include</label>
 
-    <div class="checkbox">
+    <br class="checkbox">
 
         <input type="checkbox" name="typeIds" th:value="${'1'}"/>
 
@@ -35,9 +35,17 @@
 
         <label>Numeric</label>
 
+        </br>
+        </br>
+
+    <div th:if="${missVal}">
+            <p th:text="${missVal}"></p>
+
+        </div>
+
     </div>
     <br/>
-    <input type="submit" value="Generate password"/>
+    <input type="submit" class="btn btn-primary btn-lg" value="Generate password"/>
 </form>
 
 </body>

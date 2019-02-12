@@ -62,6 +62,26 @@ public class GeneratorController {
             return "redirect:/keyword/login";
         }
 
+        List<String> missVals = Arrays.asList("Enter a range and select some mods to be included", "Please enter a range", "Please select some mods to be included");
+        if (typeIds == null && range == null){
+            String missVal = "";
+            missVal = missVals.get(0);
+            model.addAttribute("missVal", missVal);
+            return "generator/index";
+        }
+        if (range == null){
+            String missVal = "";
+            missVal = missVals.get(1);
+            model.addAttribute("missVal", missVal);
+            return "generator/index";
+        }
+        if (typeIds == null){
+            String missVal = "";
+            missVal = missVals.get(2);
+            model.addAttribute("missVal", missVal);
+            return "generator/index";
+        }
+
         User currentUser = (User) session.getAttribute("currentUser");
         Random randomNum = new Random();
         ArrayList<String> specials = new ArrayList<>();

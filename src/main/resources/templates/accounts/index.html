@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head">
+    <link rel="styles" href="styles.css">
+</head>
 
 <body class="container">
 
@@ -28,8 +30,8 @@
 
 </table>
 
-    <a href="/account/add">Add account(s)</a> |
-    <a href="/account/remove">Remove account(s)</a>
+    <a class="btn btn-success" href="/account/add">Add account(s)</a>
+    <a class="btn btn-danger" href="/account/remove">Remove account(s)</a>
 
 
 </body>

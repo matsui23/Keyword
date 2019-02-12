@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head">
+
+</head>
 
 <body class="container">
 
@@ -26,7 +28,7 @@
         <span th:errors="*{entry}" class="error"></span>
     </div>
 
-    <input type="submit" value="Add mod"/>
+    <input type="submit" class="btn btn-primary btn-lg" value="Add mod"/>
 </form>
 
 </body>
