@@ -62,7 +62,7 @@ public class GeneratorController {
             return "redirect:/keyword/login";
         }
 
-        List<String> missVals = Arrays.asList("Enter a range and select some mods to be included", "Please enter a range", "Please select some mods to be included");
+        List<String> missVals = Arrays.asList("Enter a range and select some mods to be included", "Please enter a range", "That range value was not an integer", "Please select some mods to be included");
         if (typeIds == null && range == null){
             String missVal = "";
             missVal = missVals.get(0);
@@ -75,9 +75,16 @@ public class GeneratorController {
             model.addAttribute("missVal", missVal);
             return "generator/index";
         }
-        if (typeIds == null){
+        if (range instanceof java.lang.Integer != true){
             String missVal = "";
             missVal = missVals.get(2);
+            model.addAttribute("missVal", missVal);
+            return "generator/index";
+        }
+
+        if (typeIds == null){
+            String missVal = "";
+            missVal = missVals.get(3);
             model.addAttribute("missVal", missVal);
             return "generator/index";
         }

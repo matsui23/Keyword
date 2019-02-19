@@ -6,7 +6,7 @@
 
 <body class="container">
 
-<h1 th:text="${title}">Default Title</h1>
+<h1 class="title" th:text="${title}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
 
@@ -15,7 +15,9 @@
 
 <form method="post" style="max-width:600px;" th:object="${mod}">
     <div class="form-group">
-        <label th:for="role">Type</label>
+        <label class="ptags" th:for="role">Type</label>
+        </br>
+        </br>
         <select th:name="role">
             <option th:value=${'1'}>Special</option>
             <option th:value=${'2'}>Alphabetic</option>
@@ -23,12 +25,13 @@
         </select>
     </div>
     <div class="form-group">
-        <label th:for="entry">Characters / Substring</label>
+        <label class="ptags" th:for="entry">Characters / Substring</label>
+        </br>
         <input class="form-control" th:field="*{entry}" />
         <span th:errors="*{entry}" class="error"></span>
     </div>
-
-    <input type="submit" class="btn btn-primary btn-lg" value="Add mod"/>
+    </br>
+    <input type="submit" class="btn btn-success" value="Add mod"/>
 </form>
 
 </body>

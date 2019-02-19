@@ -4,7 +4,7 @@
 
 <body class="container">
 
-<h1 th:text="${title}">Default Title</h1>
+<h1 class="title" th:text="${title}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
 
@@ -12,12 +12,12 @@
 
 <form method="post" style="max-width:600px;" th:object="${user}">
     <div class="form-group">
-        <label th:for="email">Email</label>
+        <label class="ptags" th:for="email">Email</label>
         <input class="form-control" th:field="*{email}" />
         <span th:errors="*{email}" class="error"></span>
     </div>
     <div class="form-group">
-        <label th:for="password">Password</label>
+        <label class="ptags" th:for="password">Password</label>
         <input class="form-control" th:field="*{password}" />
         <span th:errors="*{password}" class="error"></span>
     </div>

@@ -4,30 +4,30 @@
 
 <body class="container">
 
-<h1 th:text="${title}">Default Title</h1>
+<h1 class="title" th:text="${title}">Default Title</h1>
 
-<p th:unless="${tests} and ${tests.size()}">No current mods</p>
+<p class="ptags" th:unless="${tests} and ${tests.size()}">No current mods</p>
 
 <nav th:replace="fragments :: navigation"></nav>
 
 </br>
 
-<p th:text="${session.currentUser.email}"></p>
+<p class="ptags" th:text="${session.currentUser.email}"></p>
 
 </br>
 
 <table class="table">
     <tr>
-        <th>Type</th>
-        <th>Entry</th>
+        <th class="ptags">Type</th>
+        <th class="ptags">Entry</th>
     </tr>
         <div th:if="${tests != null}">
             <tr th:each="test : ${tests}">
                 <div th:if="${test.userid} == ${session.currentUser.id}">
-                    <td th:if="${test.role == 1}" th:text = "Special"></td>
-                    <td th:if="${test.role == 2}" th:text = "Alphabetic"></td>
-                    <td th:if="${test.role == 3}" th:text = "Numeric"></td>
-                    <td th:text="${test.entry}"></td>
+                    <td class="table_data_specials" th:if="${test.role == 1}" th:text = "Special"></td>
+                    <td class="table_data_alphas" th:if="${test.role == 2}" th:text = "Alphabetic"></td>
+                    <td class="table_data_numerics" th:if="${test.role == 3}" th:text = "Numeric"></td>
+                    <td class="table_data" th:text="${test.entry}"></td>
 
                 </div>
             </tr>

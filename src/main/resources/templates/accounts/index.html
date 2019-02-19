@@ -6,29 +6,29 @@
 
 <body class="container">
 
-<h1 th:text="${title}">Default Title</h1>
+<h1 class="title" th:text="${title}">Default Title</h1>
 
-<p th:unless="${accounts} and ${accounts.size()}">No currently linked accounts</p>
+<p class="ptags" th:unless="${accounts} and ${accounts.size()}">No currently linked accounts</p>
 
 <nav th:replace="fragments :: navigation"></nav>
 
 </br>
 
-<p th:text="${session.currentUser.email}"></p>
+<p class="ptags" th:text="${session.currentUser.email}"></p>
 
 </br>
 
 <table class="table">
 
     <tr>
-        <th>Service / Name</th>
-        <th>Password</th>
+        <th class="ptags">Service / Name</th>
+        <th class="ptags">Password</th>
     </tr>
 
     <tr th:each="account : ${accounts}">
         <div th:if="${account.userid} == ${session.currentUser.id}">
-        <td th:text="${account.name}"></td>
-        <td th:text="${account.password}"></td>
+        <td class="table_data" th:text="${account.name}"></td>
+        <td class="table_data" th:text="${account.password}"></td>
         </div>
     </tr>
 

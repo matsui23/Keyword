@@ -4,14 +4,49 @@
 
 <body class="container">
 
-<h1 th:text="${title}"></h1>
+<h1 class="title" th:text="${title}"></h1>
 
 <nav th:replace="fragments :: navigation"></nav>
 
 </br>
 
-<p>Welcome to your personal password bank</p>
-<p th:text="${session.currentUser.email}"></p>
+<p class="ptags">Welcome to Keyword, your personal password bank</p>
+<p class="ptags" th:text="${session.currentUser.email}"></p>
+</br>
+<p class="headers">What is Keyword and how to use it...</p>
+
+<p class="table_data">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspKeyword is an app that allows you to generate, store, and customize random passwords. </br>
+    Serving as a secure location for the storage of passwords and a utilizing a system to create unique pseudo random ones. </br>
+    This promotes more secure account creation habits for all those who create/update passwords often.</br>
+    After registering and logging in you can visit the "Mods" page to create mods.
+
+    </br>
+    </br>
+
+    Mods serve as fragments that are hashed together to generate personalized passwords.  Mods can be saved as one of three </br>
+    different types: Alphabetic, Numeric, or Special.  Each corresponding to a type of character a password might </br>
+    contain.
+
+    </br>
+    </br>
+
+    &nbsp&nbsp&nbsp&nbsp&nbsp Creating a large library of mods allows the Generator to produce more diverse keys. </br>
+    Edit your mod list however you see fit.  Keep it shorter to generate keys that have less variance but still contain </br>
+    segments the user specifies.  Or, create a large library to see drastically different results each time.
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p>
 
 </body>
 </html>

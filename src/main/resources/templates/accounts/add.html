@@ -4,22 +4,24 @@
 
 <body class="container">
 
-<h1 th:text="${title}">Default Title</h1>
+<h1 class="title" th:text="${title}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
+</br>
+</br>
 
 <form method="post" style="max-width:600px;" th:object="${account}">
     <div class="form-group">
-        <label th:for="name">Service / Name</label>
+        <label class="headers" th:for="name">Service / Name</label>
         <input class="form-control" th:field="*{name}" />
         <span></span>
     </div>
     <div class="form-group">
-        <label th:for="password">Password</label>
+        <label class="headers" th:for="password">Password</label>
         <input class="form-control" th:field="*{password}" />
     </div>
 
-    <input type="submit" value="Add account" />
+    <input class="btn btn-success" type="submit" value="Add account" />
 </form>
 
 <div th:if="${passVal}">

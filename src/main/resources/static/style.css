@@ -1,6 +1,46 @@
 
 
-.result{
-  font-family: "Oswald", Helvetica, Arial, sans-serif;
-  color: blue;
+.ptags{
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+
 }
+
+.headers{
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font size: 36px;
+
+}
+
+.title{
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font size: 48px;
+
+}
+
+.table_data{
+              font-family: "Open Sans", Helvetica, Arial, sans-serif;
+              font size: 48px;
+
+}
+
+.table_data_alphas{
+              font-family: "Open Sans", Helvetica, Arial, sans-serif;
+              font size: 48px;
+              color: #CC9900;
+
+}
+
+.table_data_specials{
+              font-family: "Open Sans", Helvetica, Arial, sans-serif;
+              font size: 48px;
+              color: #339999;
+
+}
+.table_data_numerics{
+              font-family: "Open Sans", Helvetica, Arial, sans-serif;
+              font size: 48px;
+              color: #FF6666;
+
+}
+

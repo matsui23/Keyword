@@ -4,7 +4,7 @@
 
 <body class="container">
 
-<h1 th:text="${title}">Default Title</h1>
+<h1 class="title" th:text="${title}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
 
@@ -14,12 +14,13 @@
 <form method="post" style="max-width:600px;">
 
     <div class="form-group">
-        <label>Set the number of mods to be used - for best results enter 4 - 8</label>
+        <label class="ptags">Set the number of mods to be used - for best results enter 4 - 8</label>
+
         <input class="form-control" name="range"/>
     </div>
 
     <br/>
-    <label>Select what kind of mods you want to include</label>
+    <label class="ptags">Select what kind of mods you want to include</label>
 
     <br class="checkbox">
 

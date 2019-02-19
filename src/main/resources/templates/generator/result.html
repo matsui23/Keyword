@@ -3,9 +3,7 @@
 <br/>
 <head th:replace="fragments :: head" ></head>
 
-<h1 th:text="${title}"></h1>
-
-
+<h1 class="title" th:text="${title}"></h1>
 
 </head>
 <body class="container">
@@ -15,8 +13,11 @@
 </br>
 </br>
 
-<p class = "result" th:text="'Your new random password: ' + ${result}"></p>
+<p class = "ptags" th:text="'Your new random password: ' + ${result}"></p>
 
+</br>
+
+<p class = "table_data">Feel free to copy the password and save it with an associated account or simply write it down manually for later use.</p>
 
 </nav>
 

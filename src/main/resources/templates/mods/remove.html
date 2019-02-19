@@ -3,9 +3,13 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
-<h1 th:text="${title}">Default Title</h1>
+<h1 class="title" th:text="${title}">Default Title</h1>
+
+</br>
 
 <nav th:replace="fragments :: navigation"></nav>
+
+</br>
 
 <form method="post">
 
@@ -14,14 +18,16 @@
         <div th:if="${test.userid} == ${session.currentUser.id}">
 
             <input type="checkbox" name="modIds" th:value="${test.id}" th:id="${test.id}"/>
-            <label th:for="${test.id}" th:text="${test.entry}"></label>
+            <label class="ptags" th:for="${test.id}" th:text="${test.entry}"></label>
             <br />
 
         </div>
 
     </div>
 
-    <input type="submit" value="Remove Mod(s)" />
+    </br>
+
+    <input class="btn btn-danger" type="submit" value="Remove Mod(s)" />
 </form>
 
 </body>
