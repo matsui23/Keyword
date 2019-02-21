@@ -42,7 +42,7 @@ public class ModController {
 
         if (session.getAttribute("currentUser") == null) {
 
-            return "redirect:/keyword/login";
+            return "redirect:/login";
         }
 
         session.getAttribute("currentUser");
@@ -57,7 +57,7 @@ public class ModController {
     public String displayModForm(Model model, HttpSession session) {
 
         if (session.getAttribute("currentUser") == null) {
-            return "redirect:/keyword/login";
+            return "redirect:/login";
         }
 
         model.addAttribute("title", "Add a new mod");
@@ -92,7 +92,7 @@ public class ModController {
 
         if (session.getAttribute("currentUser") == null) {
 
-            return "redirect:/keyword/login";
+            return "redirect:/login";
         }
 
         session.getAttribute("currentUser");
@@ -103,9 +103,22 @@ public class ModController {
     }
 
     @RequestMapping(value = "remove", method = RequestMethod.POST)
-    public String deleteExistingModProcess(@RequestParam(value = "modIds", required = false) int[] modIds) {
+    public String deleteExistingModProcess(@RequestParam(value = "modIds", required = false) int[] modIds, Model model, HttpSession session) {
 
         Iterable<Mod> mods = modDao.findAll();
+
+        if(modIds == null){
+
+            String accVal = "Please select some mods to remove before submitting";
+
+            session.getAttribute("currentUser");
+            model.addAttribute("accVal", accVal);
+            model.addAttribute("title", "Delete some mods");
+            Iterable<Mod> testList = modDao.findAll();
+            model.addAttribute("tests", testList);
+
+            return "mods/remove";
+        }
 
         for(Mod mod : mods){
 

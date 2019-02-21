@@ -40,7 +40,7 @@ public class GeneratorController {
 
         if (session.getAttribute("currentUser") == null) {
 
-            return "redirect:/keyword/login";
+            return "redirect:/login";
         }
 
         List<Integer> typeIds = Arrays.asList(1, 2, 3);
@@ -59,7 +59,7 @@ public class GeneratorController {
         List<Integer> setTypeIds = Arrays.asList(1, 2, 3);
         if (session.getAttribute("currentUser") == null) {
 
-            return "redirect:/keyword/login";
+            return "redirect:/login";
         }
 
         List<String> missVals = Arrays.asList("Enter a range and select some mods to be included", "Please enter a range", "That range value was not an integer", "Please select some mods to be included");
@@ -67,18 +67,21 @@ public class GeneratorController {
             String missVal = "";
             missVal = missVals.get(0);
             model.addAttribute("missVal", missVal);
+            model.addAttribute("title", "Password Generator");
             return "generator/index";
         }
         if (range == null){
             String missVal = "";
             missVal = missVals.get(1);
             model.addAttribute("missVal", missVal);
+            model.addAttribute("title", "Password Generator");
             return "generator/index";
         }
         if (range instanceof java.lang.Integer != true){
             String missVal = "";
             missVal = missVals.get(2);
             model.addAttribute("missVal", missVal);
+            model.addAttribute("title", "Password Generator");
             return "generator/index";
         }
 
@@ -86,6 +89,7 @@ public class GeneratorController {
             String missVal = "";
             missVal = missVals.get(3);
             model.addAttribute("missVal", missVal);
+            model.addAttribute("title", "Password Generator");
             return "generator/index";
         }
 

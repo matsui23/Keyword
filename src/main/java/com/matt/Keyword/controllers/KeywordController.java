@@ -21,7 +21,7 @@ import javax.validation.Valid;
  * Created by LaunchCode
  */
 @Controller
-@RequestMapping("keyword")
+@RequestMapping("/")
 
 public class KeywordController {
 
@@ -33,7 +33,7 @@ public class KeywordController {
     public String index(Model model, HttpSession session) {
 
         if (session.getAttribute("currentUser") == null) {
-            return "redirect:keyword/login";
+            return "redirect:/login";
         }
 
         model.addAttribute("title", "Keyword");
@@ -60,7 +60,7 @@ public class KeywordController {
 
         userDao.save(newUser);
 
-        return "redirect:/keyword";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
@@ -100,7 +100,7 @@ public class KeywordController {
         model.addAttribute(new User());
         model.addAttribute("title", "Login");
 
-        return "redirect:/keyword/login";
+        return "redirect:/login";
 
     }
 

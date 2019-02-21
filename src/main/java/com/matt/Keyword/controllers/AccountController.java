@@ -41,7 +41,7 @@ public class AccountController {
 
         if (session.getAttribute("currentUser") == null) {
 
-            return "redirect:/keyword/login";
+            return "redirect:/login";
         }
 
         session.getAttribute("currentUser");
@@ -56,7 +56,7 @@ public class AccountController {
     public String displayAddAccountForm(Model model, HttpSession session) {
 
         if (session.getAttribute("currentUser") == null) {
-            return "redirect:/keyword/login";
+            return "redirect:/login";
         }
 
         model.addAttribute("title", "Add and link an account");
@@ -110,7 +110,7 @@ public class AccountController {
 
         if (session.getAttribute("currentUser") == null) {
 
-            return "redirect:/keyword/login";
+            return "redirect:/login";
         }
 
         session.getAttribute("currentUser");
